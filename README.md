@@ -3,9 +3,9 @@ SQL
 Pewlett-Hackard-Analysis
 Project Overview
 Purpose
-PH has decided to offer retirement packages and find out which position need to fill in the future. But PH itself is fallen behind to maintain the database.
-With the help of SQL tools (PostgreSQL and PgAdmin4), Company wants to maintain a data and prepare company with several thousand employees for the upcoming "Silver Tsunami".
-As per the dataset, lot of employees are going to be retired in the future and company needs to prepare with retirement packages, open positions and employee training.
+PH has decided to offer retirement packages and for us to find out which position need to fill in the future. But PH itself has fallen behind to maintain the database.
+With the help of SQL tools (PostgreSQL and PgAdmin4), the Company wants to maintain data and prepare the company with several thousand employees for the upcoming "Silver Tsunami".
+As for the dataset, a lot of employees are going to be retiring in the future and the company needs to be prepared with retirement packages, employee training, and open positions.
 Requirements:
 1.	Identify the retiring employees by their title.
 2.	Determine the sum of retiring employees grouped by title.
@@ -22,6 +22,7 @@ o	CSV files
 ERD and Schema
 ERD An entity-relationship diagram (ERD) is crucial to creating a good database design.
 •	It is used as a high-level logical data model, which is useful in developing a conceptual design for databases.
+![ERD_EmployeeDB](https://user-images.githubusercontent.com/91812090/150653978-f7a3acce-6a62-4645-9921-1de742b95312.png)
  
 Figure 1: ERD
 Schema:
@@ -70,10 +71,6 @@ Figure 5: Table with the employee grouped by title
 •	Then query filters by birth_date betwwen ('1965-01-01' AND '1965-12-31') and to_date to include only current values.
 •	It is unique data because we used DISTINCT ON(emp_no).
 •	To ensure most recent valuse we will use ORDER BY e.emp_no,ti.from_date DESC.
-Summary
-As the company is preparing for the upcoming "silver tsunami" , A good planning is very important, especially when too many employees are involved.
-Reports above give a good insight about the number of the employees that are about to retire and hold specific title.
-Now we need to concentrate on staff and their respective departments,So that headquarters can see what to expect in each department separately. Here we used retirement_titles,dept_emp,departments table to retrive the Roles per Staff and Departament which has 90398 rows in it
  
 Figure 6: Table with retirement-ready employee’s data with added department name
 •	To retrieve department name information, we can join/merge additional table departments into existing table retirement_titleswith the inner join.
@@ -93,3 +90,8 @@ The result includes only staff on higher positions.
 Figure 8: Sum of qualified, retirement-ready employees’ group by title and department
 •	We can find out who is qualified and ready to give training for upcoming candidates.
 •	We can retrieve dept_name and count(title) from unique_titles_departments and put condition WHERE ut.titles IN("Senior_staff","Senior Engineer","Technology Leader","Manager") and GROUP BY (dept_name and title) with descending order.
+
+Summary
+As the company is preparing for the upcoming "silver tsunami" , A great plan is very important, especially when too many employees are involved.
+The reports above give great insight about the number of the employees that are about to retire and hold a specific title.
+Now we need to concentrate on staff and their respective departments, that headquarters can see what to expect in each department separately. Here we used retirement_titles,dept_emp,departments table to retrieve the roles per Staff and Departament which has 90398 rows in it.
